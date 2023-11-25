@@ -1,0 +1,21 @@
+import openai
+
+# Set your OpenAI API key
+openai.api_key = 'YOUR_API_KEY'
+
+# Specify the data you want to analyze
+data_to_analyze = """
+# Your data goes here
+"""
+
+# Request data analysis from ChatGPT-4
+response = openai.Completion.create(
+    engine="text-davinci-002",  # Use the appropriate ChatGPT-4 engine
+    prompt=data_to_analyze,
+    temperature=0,  # You can adjust the temperature parameter
+    max_tokens=500  # You can adjust the max_tokens parameter
+)
+
+# Extract and print the generated analysis
+generated_analysis = response.choices[0].text.strip()
+print(generated_analysis)
