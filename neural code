@@ -1,0 +1,25 @@
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+# Sample data
+inputs = [[0, 0], [0, 1], [1, 0], [1, 1]]
+outputs = [0, 1, 1, 0]
+
+# Build the model
+model = Sequential()
+model.add(Dense(units=2, input_dim=2, activation='relu'))
+model.add(Dense(units=1, activation='sigmoid'))
+
+# Compile the model
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+# Train the model
+model.fit(inputs, outputs, epochs=1000, verbose=0)
+
+# Make predictions
+predictions = model.predict(inputs)
+
+# Display the predictions
+for i in range(len(inputs)):
+    print(f"Input: {inputs[i]}, Predicted Output: {predictions[i][0]}")
